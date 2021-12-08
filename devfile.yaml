@@ -60,26 +60,23 @@ components:
           discoverable: 'true'
           public: 'false'
 commands:
-  - name: 1. Build
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
-        type: exec
-        command: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} -DskipTests clean install'
-        component: maven
-  - name: 2. Run
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
-        type: exec
-        command: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} spring-boot:run'
-        component: maven
-  - name: 3. Run in debug mode
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
-        type: exec
-        command: |-
+  - id: 1. Build
+    exec:
+      workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
+      commandLine: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} -DskipTests clean install'
+      component: maven
+  - id: 2. Run
+    exec:
+      workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
+      commandLine: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} spring-boot:run'
+      component: maven
+  - id: 3. Run in debug mode
+    exec:
+      workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
+      commandLine: |-
           mvn  -Duser.home=${HOME} spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug
            -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
-        component: maven
+      component: maven
   - name: 4. Run tests
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
