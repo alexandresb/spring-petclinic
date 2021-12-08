@@ -1,12 +1,14 @@
 schemaVersion: 2.1.0
 metadata:
   generateName: spring-petclinic-
+  version: 2.0.0
 projects:
   - name: spring-petclinic
-    source:
-      type: git
-      location: 'https://github.com/alexandresb/spring-petclinic.git'
-      branch: main
+    git :
+      remotes:
+        origin: : 'https://github.com/alexandresb/spring-petclinic.git'
+      checkoutFrom:
+        revision: main
 components:
   - id: redhat/java11/latest
     type: chePlugin
