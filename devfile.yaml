@@ -6,7 +6,7 @@ projects:
   - name: spring-petclinic
     git :
       remotes:
-        origin: : 'https://github.com/alexandresb/spring-petclinic.git'
+        origin: 'https://github.com/alexandresb/spring-petclinic.git'
       checkoutFrom:
         revision: main
 components:
