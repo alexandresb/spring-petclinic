@@ -60,7 +60,7 @@ components:
             public: 'false'
   - name: mysql-storage
     volume:
-     ephemeral: true
+     size: 1Gi
 commands:
   - id: build
     exec:
