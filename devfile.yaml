@@ -35,12 +35,10 @@ components:
         - value: 'mysql'
           name: SPRING_PROFILES_ACTIVE
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
-          name: MYSQL_URL
-          
+          name: MYSQL_URL        
   #- name: m2
       #volume:
-        #size: 1Gi
-        
+        #size: 1Gi       
   - name: mysql
     container:
       image: >-
@@ -101,19 +99,6 @@ commands:
   - id: deploytoopenshift
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
-      command: 'mvn fabric8:deploy -Popenshift -DskipTests'
+      commandLine: 'mvn fabric8:deploy -Popenshift -DskipTests'
       component: maven
-  - id: debugremotejavaapplication
-    vscode-launch:
-      inlined: |
-          {
-           "version": "0.2.0",
-           "configurations": [
-             {
-               "type": "java",
-               "name": "Debug (Attach) - Remote",
-               "request": "attach",
-               "hostName": "localhost",
-               "port": 5005
-             }]
-           }
+  
