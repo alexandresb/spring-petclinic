@@ -10,6 +10,12 @@ projects:
       checkoutFrom:
         revision: main
 components:
+  - name: che-plugin
+    plugin:
+      id: redhat/java11/latest
+  - name: che-plugin-2
+    plugin:
+      id: redhat/dependency-analytics/latest
   - name: maven
     container:
       mountSources: true
@@ -30,9 +36,9 @@ components:
           name: SPRING_PROFILES_ACTIVE
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
           name: MYSQL_URL        
-  #- name: m2
-      #volume:
-        #size: 1Gi       
+  - name: m2
+      volume:
+        size: 1Gi       
   - name: mysql
     container:
       image: >-
