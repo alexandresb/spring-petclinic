@@ -21,7 +21,7 @@ components:
       mountSources: true
       endpoints:
         - name: 8080-tcp
-          port: 8080
+          targetPort: 8080
       memoryLimit: 768Mi
       volumeMounts:
         - name: m2
@@ -60,7 +60,7 @@ components:
           path: /var/lib/mysql
       endpoints:
         - name: mysql-workspace
-          port: 3306
+          targetPort: 3306
           attributes:
             discoverable: 'true'
             public: 'false'
