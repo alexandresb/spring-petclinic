@@ -22,7 +22,7 @@ components:
       memoryLimit: 768Mi
       volumeMounts:
         - name: m2
-          containerPath: /home/jboss/.m2
+          path: /home/jboss/.m2
      name: maven
      image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8@sha256:641e223f5efbc32bab3461aa000e3a50a5dcca063331322158d1c959129ffd99'
      env:
@@ -53,7 +53,7 @@ components:
           value: petclinic
       volumeMounts:
         - name: mysql-storage
-          containerPath: /var/lib/mysql
+          path: /var/lib/mysql
       endpoints:
         - name: mysql-workspace
           port: 3306
