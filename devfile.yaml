@@ -17,7 +17,7 @@ components:
     plugin:
       id: redhat/dependency-analytics/latest
   - name: maven
-     container:
+    container:
       mountSources: true
       endpoints:
         - name: 8080-tcp
