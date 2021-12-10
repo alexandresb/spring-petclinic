@@ -35,10 +35,10 @@ components:
         - value: 'mysql'
           name: SPRING_PROFILES_ACTIVE
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
-          name: MYSQL_URL        
+          name: MYSQL_URL
   - name: m2
-     volume:
-       size: 1Gi       
+    volume:
+      size: 1Gi
   - name: mysql
     container:
       image: >-
@@ -55,7 +55,7 @@ components:
           value: petclinic
         - name: MYSQL_DATABASE
           value: petclinic
-      volumeMounts: 
+      volumeMounts:
         - name: mysql-storage
           path: /var/lib/mysql
       endpoints:
@@ -101,4 +101,3 @@ commands:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       commandLine: 'mvn fabric8:deploy -Popenshift -DskipTests'
       component: maven
-  
