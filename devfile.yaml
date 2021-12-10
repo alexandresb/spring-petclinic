@@ -1,7 +1,7 @@
-schemaVersion: 2.0.0
+schemaVersion: 2.1.0
 metadata:
   generateName: spring-petclinic-
-  version: 2.0.0
+  version: 2.1.0
 projects:
   - name: spring-petclinic
     git :
@@ -22,7 +22,7 @@ components:
       endpoints:
         - name: 8080-tcp
           port: 8080
-      memoryLimit: 768M
+      memoryLimit: 768Mi
       volumeMounts:
         - name: m2
           path: /home/jboss/.m2
@@ -36,8 +36,9 @@ components:
           name: SPRING_PROFILES_ACTIVE
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
           name: MYSQL_URL
-  - volume:
-      name: m2
+  - name: m2
+      volume:
+        size: 1Gi
   - name: mysql
     container:
       image: >-
