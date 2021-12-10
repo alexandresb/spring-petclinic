@@ -38,7 +38,7 @@ components:
           name: MYSQL_URL
           
   #- name: m2
-     # volume:
+      #volume:
         #size: 1Gi
         
   - name: mysql
