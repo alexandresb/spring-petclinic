@@ -14,7 +14,8 @@ components:
       id: redhat/java11/latest
   - plugin:
       id: redhat/dependency-analytics/latest
-  - container:
+  -  name: maven
+     container:
       mountSources: true
       endpoints:
         - name: 8080-tcp
@@ -23,7 +24,6 @@ components:
       volumeMounts:
         - name: m2
           path: /home/jboss/.m2
-     name: maven
      image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8@sha256:641e223f5efbc32bab3461aa000e3a50a5dcca063331322158d1c959129ffd99'
      env:
         - value: '-XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/jboss'
@@ -35,8 +35,8 @@ components:
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
           name: MYSQL_URL
 
-  - container:
-      name: mysql
+  - name: mysql
+    container:
       image: >-
         registry.redhat.io/rhel8/mysql-80@sha256:55c08482a20b653dab4d78fad77b5a459e04258135e19fb14efbd1072c786fd3
       memoryLimit: 512Mi
