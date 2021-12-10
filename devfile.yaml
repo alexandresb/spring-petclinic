@@ -10,11 +10,13 @@ projects:
       checkoutFrom:
         revision: main
 components:
-  - plugin:
+  - name: che-plugin
+    plugin:
       id: redhat/java11/latest
-  - plugin:
+  - name: che-plugin-2
+    plugin:
       id: redhat/dependency-analytics/latest
-  -  name: maven
+  - name: maven
      container:
       mountSources: true
       endpoints:
@@ -61,29 +63,29 @@ components:
             discoverable: 'true'
             public: 'false'
 commands:
-  - id: 1. Build
+  - id: Build
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       commandLine: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} -DskipTests clean install'
       component: maven
-  - id: 2. Run
+  - id: Run
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       commandLine: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} spring-boot:run'
       component: maven
-  - id: 3. Run in debug mode
+  - id: Run in debug mode
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       commandLine: |-
           mvn  -Duser.home=${HOME} spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug
            -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
       component: maven
-  - id: 4. Run tests
+  - id: Run tests
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       commandLine: 'MAVEN_OPTS="-Xmx200m" && mvn -Duser.home=${HOME} verify'
       component: maven
-  - id: 5. Log into deployment cluster
+  - id: Log into deployment cluster
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       commandLine: |
@@ -92,7 +94,7 @@ commands:
           echo "you must run 'oc login ...' in the maven terminal."
           echo
       component: maven
-  - id: 6. Deploy to OpenShift
+  - id: Deploy to OpenShift
     exec:
       workingDir: '${CHE_PROJECTS_ROOT}/spring-petclinic'
       command: 'mvn fabric8:deploy -Popenshift -DskipTests'
