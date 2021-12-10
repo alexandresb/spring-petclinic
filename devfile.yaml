@@ -37,9 +37,9 @@ components:
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
           name: MYSQL_URL
           
-  - name: m2
-      volume:
-        size: 1Gi
+  #- name: m2
+      #volume:
+        #size: 1Gi
         
   - name: mysql
     container:
