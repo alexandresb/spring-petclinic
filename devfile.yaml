@@ -58,6 +58,9 @@ components:
           attributes:
             discoverable: 'true'
             public: 'false'
+  - name: mysql-storage
+    volume:
+     ephemeral: true
 commands:
   - id: build
     exec:
