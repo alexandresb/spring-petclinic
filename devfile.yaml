@@ -22,7 +22,10 @@ components:
       endpoints:
         - name: 8080-tcp
           port: 8080
-      memoryLimit: 768Mi
+      memoryLimit: 768M
+      volumeMounts:
+        - name: m2
+          path: /home/jboss/.m2
      image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8@sha256:641e223f5efbc32bab3461aa000e3a50a5dcca063331322158d1c959129ffd99'
      env:
         - value: '-XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/jboss'
@@ -38,7 +41,7 @@ components:
     container:
       image: >-
         registry.redhat.io/rhel8/mysql-80@sha256:55c08482a20b653dab4d78fad77b5a459e04258135e19fb14efbd1072c786fd3
-      memoryLimit: 512Mi
+      memoryLimit: 512M
       env:
         - name: DATABASE_SERVICE_NAME
           value: mysql-workspace
