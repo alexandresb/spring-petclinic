@@ -2,6 +2,13 @@ schemaVersion: 2.1.0
 metadata:
   generateName: spring-petclinic-
   version: 1.0.0
+attributes:
+  .vscode/extensions.json: |
+    {
+      "recommendations": [
+        "redhat.java"
+      ]
+    }
   starterProjects:
   - name: spring-petclinic
     git :
