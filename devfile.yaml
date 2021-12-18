@@ -2,7 +2,7 @@ schemaVersion: 2.1.0
 metadata:
   generateName: spring-petclinic-
   version: 1.0.0
-projects:
+  starterProjects:
   - name: spring-petclinic
     git :
       remotes:
@@ -31,8 +31,7 @@ components:
         - value: 'jdbc:mysql://mysql-workspace:3306/petclinic'
           name: MYSQL_URL
   - name: m2
-    volume:
-      size: 1Gi
+    volume: {}
   - name: mysql
     container:
       image: >-
