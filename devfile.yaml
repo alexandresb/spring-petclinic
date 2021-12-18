@@ -11,8 +11,7 @@ projects:
         revision: main
 components:
   - name: maven
-    attributes:
-    tool: console-import
+    attributes: console-import
     container:
       mountSources: true
       endpoints:
