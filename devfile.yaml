@@ -1,6 +1,8 @@
 schemaVersion: 2.1.0
 metadata:
   generateName: spring-petclinic-
+  attributes:
+    tool: console-import
   version: 1.0.0
 projects:
   - name: spring-petclinic
@@ -10,15 +12,6 @@ projects:
       checkoutFrom:
         revision: main
 components:
-  - name: buildguidance
-    attributes:
-      tool: console-import
-    container:
-      image: buildguidanceimage-placeholder
-      memoryLimit: 1024Mi
-      endpoints:
-        - name: http-3001
-          targetPort: 3001
   - name: maven
     container:
       mountSources: true
