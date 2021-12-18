@@ -1,8 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
   generateName: spring-petclinic-
-  attributes:
-    tool: console-import
   version: 1.0.0
 projects:
   - name: spring-petclinic
@@ -13,6 +11,8 @@ projects:
         revision: main
 components:
   - name: maven
+    attributes:
+    tool: console-import
     container:
       mountSources: true
       endpoints:
